@@ -3,7 +3,7 @@
 //  Localization
 //
 //  Created by Sam Rayner on 03/10/2018.
-//  Copyright © 2018 The Floow. All rights reserved.
+//  Copyright © 2018 Sam Rayner. All rights reserved.
 //
 
 import UIKit
