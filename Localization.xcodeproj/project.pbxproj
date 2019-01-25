@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E8BC0EE621F9F8A500DACD2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BC0EE521F9F8A500DACD2E /* ViewController.swift */; };
 		F4E374542164C8B4000120B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E374532164C8B4000120B3 /* AppDelegate.swift */; };
-		F4E374562164C8B4000120B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E374552164C8B4000120B3 /* ViewController.swift */; };
+		F4E374562164C8B4000120B3 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E374552164C8B4000120B3 /* LocalizationManager.swift */; };
 		F4E374592164C8B4000120B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4E374572164C8B4000120B3 /* Main.storyboard */; };
 		F4E3745B2164C8B5000120B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4E3745A2164C8B5000120B3 /* Assets.xcassets */; };
 		F4E3745E2164C8B5000120B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4E3745C2164C8B5000120B3 /* LaunchScreen.storyboard */; };
-		F4E374692164C8B5000120B3 /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E374682164C8B5000120B3 /* LocalizationTests.swift */; };
+		F4E374692164C8B5000120B3 /* LocalizationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E374682164C8B5000120B3 /* LocalizationManagerTests.swift */; };
 		F4E374752164C99D000120B3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4E374772164C99D000120B3 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -27,15 +28,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E8BC0EE521F9F8A500DACD2E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F4E374502164C8B4000120B3 /* Localization.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Localization.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E374532164C8B4000120B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F4E374552164C8B4000120B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F4E374552164C8B4000120B3 /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
 		F4E374582164C8B4000120B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4E3745A2164C8B5000120B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4E3745D2164C8B5000120B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4E3745F2164C8B5000120B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4E374642164C8B5000120B3 /* LocalizationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocalizationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4E374682164C8B5000120B3 /* LocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
+		F4E374682164C8B5000120B3 /* LocalizationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManagerTests.swift; sourceTree = "<group>"; };
 		F4E3746A2164C8B5000120B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4E374762164C99D000120B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F4E374782164C9CC000120B3 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -81,12 +83,13 @@
 			isa = PBXGroup;
 			children = (
 				F4E374532164C8B4000120B3 /* AppDelegate.swift */,
-				F4E374552164C8B4000120B3 /* ViewController.swift */,
+				F4E374552164C8B4000120B3 /* LocalizationManager.swift */,
 				F4E374572164C8B4000120B3 /* Main.storyboard */,
 				F4E3745A2164C8B5000120B3 /* Assets.xcassets */,
 				F4E3745C2164C8B5000120B3 /* LaunchScreen.storyboard */,
 				F4E3745F2164C8B5000120B3 /* Info.plist */,
 				F4E374772164C99D000120B3 /* Localizable.strings */,
+				E8BC0EE521F9F8A500DACD2E /* ViewController.swift */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -94,7 +97,7 @@
 		F4E374672164C8B5000120B3 /* LocalizationTests */ = {
 			isa = PBXGroup;
 			children = (
-				F4E374682164C8B5000120B3 /* LocalizationTests.swift */,
+				F4E374682164C8B5000120B3 /* LocalizationManagerTests.swift */,
 				F4E3746A2164C8B5000120B3 /* Info.plist */,
 			);
 			path = LocalizationTests;
@@ -108,6 +111,7 @@
 			buildConfigurationList = F4E3746D2164C8B5000120B3 /* Build configuration list for PBXNativeTarget "Localization" */;
 			buildPhases = (
 				F4E3744C2164C8B4000120B3 /* Sources */,
+				E8BC0EE421F9F68300DACD2E /* SwiftLint */,
 				F4E3744D2164C8B4000120B3 /* Frameworks */,
 				F4E3744E2164C8B4000120B3 /* Resources */,
 			);
@@ -198,12 +202,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E8BC0EE421F9F68300DACD2E /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"${CONFIGURATION}\" != \"Debug\" ]]; then exit 0; fi\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F4E3744C2164C8B4000120B3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4E374562164C8B4000120B3 /* ViewController.swift in Sources */,
+				E8BC0EE621F9F8A500DACD2E /* ViewController.swift in Sources */,
+				F4E374562164C8B4000120B3 /* LocalizationManager.swift in Sources */,
 				F4E374542164C8B4000120B3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,7 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4E374692164C8B5000120B3 /* LocalizationTests.swift in Sources */,
+				F4E374692164C8B5000120B3 /* LocalizationManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,7 +404,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NZX3T84389;
+				DEVELOPMENT_TEAM = C4Y4L9QV9Z;
 				INFOPLIST_FILE = Localization/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -396,7 +422,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NZX3T84389;
+				DEVELOPMENT_TEAM = C4Y4L9QV9Z;
 				INFOPLIST_FILE = Localization/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
