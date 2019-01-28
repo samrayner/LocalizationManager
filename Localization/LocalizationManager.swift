@@ -21,19 +21,7 @@ class LocalizationManager {
 
     private static let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 
-    static let shared: LocalizationManager = {
-        let url = documentsDirectory.appendingPathComponent("Localization")
-        do {
-            if !FileManager.default.fileExists(atPath: url.path) {
-                try FileManager.default.createDirectory(at: url,
-                                                        withIntermediateDirectories: false,
-                                                        attributes: nil)
-            }
-            return LocalizationManager(localizationBundleDestination: url)
-        } catch {
-            return LocalizationManager()
-        }
-    }()
+    static let shared = LocalizationManager()
 
     private let localizationBundleDestination: URL
     private let stringsFilename: String
