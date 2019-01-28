@@ -6,9 +6,9 @@
 //  Copyright © 2018 Sam Rayner. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class LocalizationManager {
+final class LocalizationManager {
     typealias LanguageCode = String
     typealias TranslationKey = String
     typealias LanguageTranslations = [TranslationKey: String]
@@ -27,16 +27,19 @@ class LocalizationManager {
     private let stringsFilename: String
     private let bundleExtension: String
 
+    private(set) var currentBundle: Bundle = Bundle(for: LocalizationManager.self)
+
     init(stringsFilename: String = "Localizable.strings",
          bundleExtension: String = "localizationBundle",
          localizationBundleDestination: URL = documentsDirectory) {
         self.stringsFilename = stringsFilename
         self.bundleExtension = bundleExtension
         self.localizationBundleDestination = localizationBundleDestination
+        self.currentBundle = findOrCreateLocalizationBundle()
     }
 
     private let lProjExtension = "lproj"
-    
+
     private var plistFormat: PropertyListSerialization.PropertyListFormat = .binary
     private let plistDecoder = PropertyListDecoder()
     private lazy var plistEncoder: PropertyListEncoder = {
@@ -45,15 +48,18 @@ class LocalizationManager {
         return encoder
     }()
 
-    private lazy var currentBundle: Bundle = {
+    private func findOrCreateLocalizationBundle() -> Bundle {
         if let existingBundle = localizationBundle() { return existingBundle }
+
+        let classBundle = Bundle(for: LocalizationManager.self)
+
         do {
-            return try localizationBundle(named: self.newBundleName(), from: .main)
+            return try localizationBundle(named: self.newBundleName(), from: classBundle)
         } catch {
-            print("Failed to copy localizations from main Bundle to a new Bundle in the documents directory: \(error)")
-            return .main
+            print("Failed to copy localizations from app Bundle to a new Bundle in the documents directory: \(error)")
+            return classBundle
         }
-    }()
+    }
 
     private func contentsOfDirectory(at url: URL) -> [URL] {
         do {
@@ -83,10 +89,10 @@ class LocalizationManager {
         }
 
         guard let url = urls.first,
-              let bundle = Bundle(url: url),
-              !lProjURLs(for: bundle).isEmpty else { return nil }
+            let bundle = Bundle(url: url),
+            !lProjURLs(for: bundle).isEmpty else { return nil }
 
-        _ = urls.removeFirst() //don't clean up active bundle
+        _ = urls.removeFirst() //don't clean up current bundle
 
         return bundle
     }
@@ -166,6 +172,12 @@ class LocalizationManager {
         return newBundle
     }
 
+    private func setBundle(_ newBundle: Bundle) {
+        let oldBundle = currentBundle
+        currentBundle = newBundle
+        try? FileManager.default.removeItem(at: oldBundle.bundleURL) //clean up old bundle
+    }
+
     func bundle(for languageCode: String? = nil) -> Bundle {
         guard let languageCode = languageCode else { return currentBundle }
         let lProjURL = lProjURLs(for: currentBundle).first { $0.deletingPathExtension().lastPathComponent == languageCode }
@@ -177,8 +189,7 @@ class LocalizationManager {
         let existingTranslations = try translationsFromBundle(currentBundle)
         let updatedTranslations = updateTranslations(existingTranslations, with: translations)
         let newBundle = try localizationBundle(named: newBundleName(), from: updatedTranslations)
-        let oldBundle = currentBundle
-        currentBundle = newBundle
-        try? FileManager.default.removeItem(at: oldBundle.bundleURL) //clean up old bundle
+        setBundle(newBundle)
     }
 }
+

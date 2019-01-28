@@ -11,13 +11,7 @@ import XCTest
 
 class LocalizationManagerTests: XCTestCase {
     static let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-    static let bundlesDirectory = documentsDirectory.appendingPathComponent("testBundles")
-
-    let manager = LocalizationManager(
-        stringsFilename: "Localizable.strings",
-        bundleExtension: "testBundle",
-        localizationBundleDestination: bundlesDirectory
-    )
+    let bundlesDirectory = documentsDirectory.appendingPathComponent("testBundles")
 
     override class func tearDown() {
         super.tearDown()
@@ -27,12 +21,18 @@ class LocalizationManagerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        try? FileManager.default.createDirectory(at: LocalizationManagerTests.bundlesDirectory,
+        try? FileManager.default.createDirectory(at: bundlesDirectory,
                                                  withIntermediateDirectories: false,
                                                  attributes: nil)
     }
 
     func test_bundleForLanguageCode() {
+        let manager = LocalizationManager(
+            stringsFilename: "Localizable.strings",
+            bundleExtension: "testBundle",
+            localizationBundleDestination: bundlesDirectory
+        )
+
         let defaultLanguageBundle = manager.bundle()
         XCTAssertEqual(
             defaultLanguageBundle.bundleURL.pathExtension,
@@ -52,6 +52,8 @@ class LocalizationManagerTests: XCTestCase {
     }
 
     func test_updateBundleWithTranslations() throws {
+        let manager = LocalizationManager()
+
         XCTAssertEqual(
             NSLocalizedString("hello",
                               tableName: "Localizable",
