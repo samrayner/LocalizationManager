@@ -106,7 +106,11 @@ final class LocalizationManager {
     }
 
     private func newBundleName() -> String {
-        return "\(Date().timeIntervalSince1970).\(bundleExtension)"
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd_HH-mm-ss-SSS"
+        let dateString = formatter.string(from: Date())
+        return "\(dateString).\(bundleExtension)"
     }
 
     private func createDirectoryForBundle(named bundleName: String) throws -> URL {
