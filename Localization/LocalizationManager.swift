@@ -80,6 +80,12 @@ final class LocalizationManager {
             .filter { $0.pathExtension == lProjExtension }
     }
 
+    private func lProjURL(for languageCode: LanguageCode, in bundle: Bundle? = nil) -> URL? {
+        return lProjURLs(for: bundle ?? currentBundle).first {
+            $0.deletingPathExtension().lastPathComponent == languageCode
+        }
+    }
+
     private func localizationBundle() -> Bundle? {
         var urls = localizationBundleURLs()
 
@@ -184,8 +190,7 @@ final class LocalizationManager {
 
     func bundle(for languageCode: String? = nil) -> Bundle {
         guard let languageCode = languageCode else { return currentBundle }
-        let lProjURL = lProjURLs(for: currentBundle).first { $0.deletingPathExtension().lastPathComponent == languageCode }
-        guard let url = lProjURL else { return currentBundle }
+        guard let url = lProjURL(for: languageCode) else { return currentBundle }
         return Bundle(url: url) ?? currentBundle
     }
 
@@ -196,4 +201,3 @@ final class LocalizationManager {
         setBundle(newBundle)
     }
 }
-
